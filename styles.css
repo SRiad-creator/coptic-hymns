@@ -1,0 +1,1363 @@
+/* styles.css */
+
+/* Coptic Text Fonts */
+@font-face {
+    font-family: 'Antinoou';
+    src: url('fonts/Antinoou.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Antinoou';
+    src: url('fonts/AntinoouItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'CS Avva Shenouda';
+    src: url('fonts/CS_Avva_Shenouda.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CS New Athanasius';
+    src: url('fonts/CS_New_Athanasius.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Hazzat Notation Fonts (from hazzat.com) */
+@font-face {
+    font-family: 'Hazzat';
+    src: url('fonts/Hazzat.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Hazzat Vertical';
+    src: url('fonts/HazzatV.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Hazzat Arabic';
+    src: url('fonts/HazzatA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Hazzat Vertical Arabic';
+    src: url('fonts/HazzatVA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =============================== */
+/* Hazzat.com Notation CSS Classes */
+/* =============================== */
+.CopticFont {
+    font-family: 'CS Avva Shenouda', 'Antinoou', 'CS New Athanasius', serif;
+    color: var(--text-primary);
+    font-size: var(--coptic-font-size, 22px);
+}
+
+.HazzatFont {
+    font-family: 'Hazzat';
+    color: var(--hazzat-font-color, #c41e3a);
+    font-size: var(--hazzat-font-size, 22px);
+}
+
+.HazzatVFont {
+    font-family: 'Hazzat Vertical';
+    color: var(--hazzat-font-color, #c41e3a);
+    font-size: var(--hazzat-font-size, 22px);
+}
+
+.HazzatAFont {
+    font-family: 'Hazzat Arabic';
+    color: var(--hazzat-font-color, #c41e3a);
+    font-size: var(--hazzat-font-size, 22px);
+}
+
+.HazzatVAFont {
+    font-family: 'Hazzat Vertical Arabic';
+    color: var(--hazzat-font-color, #c41e3a);
+    font-size: var(--hazzat-font-size, 22px);
+}
+
+.EnglishFont {
+    font-family: 'Inter', Arial, Verdana, sans-serif;
+    color: var(--text-primary);
+    font-size: var(--english-font-size, 16px);
+}
+
+.ArabicFont {
+    font-family: 'Arial', 'Simplified Arabic', sans-serif;
+    color: var(--text-primary);
+    font-size: var(--arabic-font-size, 18px);
+    direction: rtl;
+    text-align: right;
+}
+
+:root {
+    --bg-main: #fcfdfe;
+    --bg-card: #ffffff;
+    --bg-sidebar: #f5f7fa;
+    --border-color: #e1e4e8;
+    --text-primary: #1e2229;
+    --text-secondary: #586069;
+    --accent-gold: #c59b27;
+    --accent-gold-dark: #a47d1b;
+    --accent-gold-light: rgba(197, 155, 39, 0.1);
+    --accent-gold-glow: rgba(197, 155, 39, 0.25);
+    --hover-bg: #edf1f6;
+    --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-sidebar);
+    color: var(--text-primary);
+    font-family: var(--font-stack);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Header */
+.hazzat-header {
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.coptic-cross-logo {
+    width: 40px;
+    height: 40px;
+    fill: var(--accent-gold);
+    filter: drop-shadow(0 2px 4px rgba(197, 155, 39, 0.2));
+}
+
+.brand-names {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    font-family: "Georgia", serif;
+}
+
+.brand-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.header-nav {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-gold-dark);
+    background-color: var(--accent-gold-light);
+}
+
+/* Main Layout: Full width (no sidebar) */
+.app-container {
+    min-height: calc(100vh - 74px);
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-main);
+    box-shadow: 0 0 20px rgba(0,0,0,0.02);
+}
+
+/* Main Content Panel */
+.content-panel {
+    padding: 40px 48px;
+    background-color: var(--bg-main);
+}
+
+/* Drill-down Navigation */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold-dark);
+    background: var(--accent-gold-light);
+}
+
+.drilldown-title {
+    font-size: 28px;
+    font-family: "Georgia", serif;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.drilldown-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.drilldown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+/* Sub-section labels (e.g., Offering of the Lamb / Liturgy of the Word) */
+.section-label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 8px 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    border-bottom: 2px solid var(--accent-gold);
+    margin-top: 8px;
+}
+.section-label:first-child { margin-top: 0; }
+.section-label-icon { font-size: 16px; }
+
+.drilldown-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.drilldown-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 6px 16px rgba(197, 155, 39, 0.1);
+    transform: translateY(-1px);
+}
+
+.drilldown-card-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 8px;
+    background-color: var(--accent-gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold-dark);
+    font-size: 18px;
+}
+
+.drilldown-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.drilldown-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.drilldown-card-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 2px 0 0 0;
+}
+
+.drilldown-card-arrow {
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.drilldown-card:hover .drilldown-card-arrow {
+    transform: translateX(3px);
+    color: var(--accent-gold-dark);
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 40px 0;
+}
+
+/* Hero Banner */
+.hero-banner {
+    text-align: center;
+    padding: 48px 32px 36px;
+    background: linear-gradient(135deg, var(--accent-gold-light) 0%, #fefcf6 50%, var(--accent-gold-light) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--accent-gold);
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(197,155,39,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-cross {
+    margin-bottom: 16px;
+    filter: drop-shadow(0 2px 8px rgba(197,155,39,0.3));
+    animation: crossGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes crossGlow {
+    from { filter: drop-shadow(0 2px 8px rgba(197,155,39,0.2)); }
+    to   { filter: drop-shadow(0 4px 16px rgba(197,155,39,0.5)); }
+}
+
+.welcome-title {
+    font-size: 36px;
+    font-family: "Georgia", serif;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.welcome-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+/* Quick Stats Row */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 36px;
+    padding: 20px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent-gold-dark);
+    font-family: "Georgia", serif;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+/* Browse Heading */
+.browse-heading {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: "Georgia", serif;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.browse-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Seasons Grid - now 3 columns for all 30+ seasons */
+.seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.season-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.season-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 6px 16px rgba(197, 155, 39, 0.1);
+    transform: translateY(-1px);
+}
+
+.season-card-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 8px;
+    background-color: var(--accent-gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold-dark);
+    font-size: 18px;
+}
+
+.season-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.season-card-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 2px 0 0 0;
+    line-height: 1.3;
+}
+
+/* How to Use Section */
+.how-to-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 8px;
+    margin-bottom: 32px;
+}
+
+.how-to-title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Georgia", serif;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.how-to-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.how-to-card {
+    text-align: center;
+    padding: 16px 12px;
+    border-radius: 10px;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s ease;
+}
+
+.how-to-card:hover {
+    border-color: var(--accent-gold);
+}
+
+.how-to-step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+
+.how-to-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.how-to-card p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===================== */
+/* External Links Section (Coptic Hymns in English) */
+/* ===================== */
+.external-links-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.external-links-title {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: "Georgia", serif;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.external-links-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.platform-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.platform-btn.spotify:hover {
+    border-color: #1DB954;
+    color: #1DB954;
+    background-color: rgba(29, 185, 84, 0.05);
+}
+
+.platform-btn.apple-music:hover {
+    border-color: #FA243C;
+    color: #FA243C;
+    background-color: rgba(250, 36, 60, 0.05);
+}
+
+.platform-btn.youtube:hover {
+    border-color: #FF0000;
+    color: #FF0000;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.platform-btn.soundcloud:hover {
+    border-color: #FF5500;
+    color: #FF5500;
+    background-color: rgba(255, 85, 0, 0.05);
+}
+
+.platform-btn.apple-podcasts:hover {
+    border-color: #9933CC;
+    color: #9933CC;
+    background-color: rgba(153, 51, 204, 0.05);
+}
+
+.platform-btn.website-link:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold-dark);
+    background-color: var(--accent-gold-light);
+}
+
+.apps-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.apps-heading {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.app-store-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.app-store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.app-store-btn:hover {
+    border-color: var(--accent-gold);
+    background-color: var(--accent-gold-light);
+    color: var(--accent-gold-dark);
+    transform: translateY(-1px);
+}
+
+.community-links {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.community-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.community-btn.signal {
+    background-color: #3A76F0;
+    color: white;
+    border: 1px solid #3A76F0;
+}
+
+.community-btn.signal:hover {
+    background-color: #2D63D0;
+    transform: translateY(-1px);
+}
+
+.community-btn.support {
+    background-color: var(--accent-gold);
+    color: white;
+    border: 1px solid var(--accent-gold);
+}
+
+.community-btn.support:hover {
+    background-color: var(--accent-gold-dark);
+    transform: translateY(-1px);
+}
+
+/* ===================== */
+/* Hymn Details Page */
+/* ===================== */
+.hymn-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+}
+
+.hymn-season-path {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent-gold-dark);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.hymn-title-main {
+    font-size: 28px;
+    font-family: "Georgia", serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Audio Player Console */
+.hazzat-player-console {
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.player-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.playback-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.player-play-btn {
+    background-color: var(--accent-gold);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--accent-gold-glow);
+    transition: all 0.2s ease;
+}
+
+.player-play-btn:hover {
+    background-color: var(--accent-gold-dark);
+    transform: scale(1.05);
+}
+
+.recording-selector-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.selector-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.recording-dropdown {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 600;
+    outline: none;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.recording-dropdown:focus {
+    border-color: var(--accent-gold);
+}
+
+.audio-progress-section {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+}
+
+.time-display {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-secondary);
+    width: 42px;
+}
+
+.timeline-container {
+    flex-grow: 1;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.timeline-fill {
+    height: 100%;
+    background-color: var(--accent-gold);
+    border-radius: 3px;
+    width: 0%;
+}
+
+.timeline-knob {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid var(--accent-gold);
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    left: 0%;
+    display: none;
+}
+
+.timeline-container:hover .timeline-knob {
+    display: block;
+}
+
+.player-secondary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.player-action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.downloader-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.downloader-btn:hover {
+    border-color: var(--accent-gold);
+    background-color: var(--bg-main);
+    color: var(--accent-gold-dark);
+}
+
+.downloader-btn.primary {
+    background-color: var(--accent-gold-light);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold-dark);
+}
+
+.downloader-btn.primary:hover {
+    background-color: var(--accent-gold);
+    color: white;
+}
+
+/* Learning speed selector */
+.rate-speed-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rate-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.rate-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.rate-btn.active {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: white;
+}
+
+/* ===================== */
+/* Player Citation Row (NEW) */
+/* ===================== */
+.player-citation-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    flex-wrap: wrap;
+}
+
+.citation-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.citation-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-gold-dark);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background-color: var(--accent-gold-light);
+}
+
+.citation-link:hover {
+    background-color: var(--accent-gold);
+    color: white;
+}
+
+/* No audio available message */
+.no-audio-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.no-audio-message svg {
+    flex-shrink: 0;
+}
+
+/* YouTube fallback player */
+.youtube-player-container {
+    padding: 4px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Hazzat Notation Sheets */
+.hazzat-notation-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.hazzat-section-heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-gold-dark);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-gold-light);
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hazzat-grid {
+    line-height: 2.2;
+    padding: 16px;
+    background-color: var(--bg-sidebar);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    word-wrap: break-word;
+    overflow-x: auto;
+    --coptic-font-size: 22px;
+    --hazzat-font-size: 22px;
+    --hazzat-font-color: #c41e3a;
+}
+
+/* Format selector tabs */
+.format-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0;
+}
+
+.format-tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+}
+
+.format-tab:hover {
+    color: var(--text-primary);
+    background-color: var(--hover-bg);
+}
+
+.format-tab.active {
+    color: var(--accent-gold-dark);
+    border-bottom-color: var(--accent-gold);
+}
+
+/* Loading spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.loading-spinner::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hazzat-block {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-sidebar);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    text-align: center;
+}
+
+.hazzat-syllable {
+    font-family: 'Antinoou', 'Georgia', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.hazzat-notation-wave {
+    height: 30px;
+    width: 60px;
+}
+
+.hazzat-notation-wave path {
+    stroke: var(--accent-gold-dark);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.hazzat-description {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Parallel Words Table */
+.lyrics-table-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.lyrics-table-heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.lyrics-col-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.lyric-heading-col {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--accent-gold-dark);
+    letter-spacing: 0.8px;
+    border-bottom: 2px solid var(--accent-gold-light);
+    padding-bottom: 8px;
+}
+
+/* Each verse row: 3 columns aligned */
+.verse-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.verse-row:last-child {
+    border-bottom: none;
+}
+
+.verse-cell {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.verse-cell.coptic {
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.verse-cell.franco {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.verse-cell.english {
+    font-size: 14.5px;
+    line-height: 1.7;
+}
+
+/* Dynamic toast notifications */
+.hazzat-toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: var(--text-primary);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(150%);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+.hazzat-toast.show {
+    transform: translateY(0);
+}
+
+/* Coptic Cross SVG graphics helper */
+svg.gold-fill {
+    fill: var(--accent-gold);
+}
+
+/* Help and Booklets pages styled simply */
+.static-page-box {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.static-page-box h1 {
+    font-family: "Georgia", serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.static-page-box h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.static-page-box p {
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.static-page-box ul {
+    padding-left: 20px;
+    margin-bottom: 24px;
+}
+
+.static-page-box li {
+    margin-bottom: 8px;
+}
+
+.booklet-card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.booklet-card:hover {
+    border-color: var(--accent-gold);
+}
+
+/* ===================== */
+/* Responsive */
+/* ===================== */
+@media (max-width: 900px) {
+    .hazzat-header {
+        padding: 12px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .content-panel {
+        padding: 20px 16px;
+    }
+
+    .seasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .how-to-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-row {
+        gap: 24px;
+    }
+
+    .platform-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .verse-row,
+    .lyrics-col-headers {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .player-main-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .player-secondary-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .player-action-buttons {
+        flex-direction: column;
+    }
+}

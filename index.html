@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coptic Hymns - Liturgical Library & Recordings</title>
+    <meta name="description" content="Explore Coptic Orthodox liturgical hymns with parallel lyrics, hazzat notation maps, and recordings by Deacon Bola Mounir and Coptic Hymns in English.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <!-- Coptic Hymns Premium Header Nav -->
+    <header class="hazzat-header">
+        <div class="header-brand">
+            <!-- Coptic Cross Icon -->
+            <svg class="coptic-cross-logo" viewBox="0 0 24 24">
+                <path d="M11 2h2v4h-2V2zm0 16h2v4h-2v-4zM2 11h4v2H2v-2zm16 0h4v2h-4v-2zm-5-3h-2v8h2V8zM5.22 5.22l1.42 1.42L5.22 8.06 3.8 6.64l1.42-1.42zm12.14 12.14l1.42 1.42-1.42 1.42-1.42-1.42 1.42-1.42zm-12.14 0l1.42-1.42 1.42 1.42-1.42 1.42-1.42-1.42zm12.14-12.14l1.42 1.42-1.42 1.42-1.42-1.42 1.42-1.42z"/>
+            </svg>
+            <div class="brand-names">
+                <span class="brand-title">COPTIC HYMNS</span>
+                <span class="brand-subtitle">Liturgical Library & Learn Portal</span>
+            </div>
+        </div>
+        <nav>
+            <ul class="header-nav">
+                <li><a href="#seasons" class="nav-link active">Seasons</a></li>
+                <li><a href="#booklets" class="nav-link">Booklets</a></li>
+                <li><a href="#help" class="nav-link">Help & Rites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Full Width Workspace (no sidebar) -->
+    <div class="app-container">
+        
+        <!-- Main Content Area -->
+        <main class="content-panel">
+
+            <!-- 1. WELCOME SCREEN / SEASONS GRID -->
+            <div id="welcome-screen">
+                <div class="welcome-screen">
+                    <!-- Hero Banner -->
+                    <div class="hero-banner">
+                        <svg class="hero-cross" viewBox="0 0 64 64" width="64" height="64">
+                            <rect x="28" y="4" width="8" height="56" rx="2" fill="var(--accent-gold)"/>
+                            <rect x="4" y="20" width="56" height="8" rx="2" fill="var(--accent-gold)"/>
+                            <circle cx="32" cy="24" r="6" fill="none" stroke="var(--accent-gold-dark)" stroke-width="2"/>
+                        </svg>
+                        <h1 class="welcome-title">Coptic Liturgical Hymns</h1>
+                        <p class="welcome-subtitle">Explore the full library of Coptic Orthodox hymns with parallel translations, authentic Hazzat melodic notation from <a href="https://www.hazzat.com" target="_blank" style="color:var(--accent-gold-dark);font-weight:600;">hazzat.com</a>, and recordings by Deacon Bola Mounir and Coptic Hymns in English.</p>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="stats-row" id="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-number" id="stat-seasons">—</span>
+                            <span class="stat-label">Seasons</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">✝</span>
+                            <span class="stat-label">With Hazzat</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">🎵</span>
+                            <span class="stat-label">Audio Ready</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Seasons Grid -->
+                    <h2 class="browse-heading">Browse All Liturgical Seasons</h2>
+                    <p class="browse-desc">Click any season to explore its services and hymns.</p>
+                    <div class="seasons-grid" id="home-seasons-grid">
+                        <div class="loading-spinner">Loading seasons from hazzat.com...</div>
+                    </div>
+
+                    <!-- How to Use -->
+                    <div class="how-to-section">
+                        <h2 class="how-to-title">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--accent-gold)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+                            How to Use This Portal
+                        </h2>
+                        <div class="how-to-grid">
+                            <div class="how-to-card">
+                                <div class="how-to-step">1</div>
+                                <h3>Browse Seasons</h3>
+                                <p>Click any liturgical season card above to see its services.</p>
+                            </div>
+                            <div class="how-to-card">
+                                <div class="how-to-step">2</div>
+                                <h3>Pick a Service</h3>
+                                <p>Choose a service (Vespers, Matins, Liturgy, etc.) to see its hymns.</p>
+                            </div>
+                            <div class="how-to-card">
+                                <div class="how-to-step">3</div>
+                                <h3>Study the Hymn</h3>
+                                <p>View Coptic text, transliteration, Hazzat notation, and translations.</p>
+                            </div>
+                            <div class="how-to-card">
+                                <div class="how-to-step">4</div>
+                                <h3>Listen & Learn</h3>
+                                <p>Play recordings and slow them down to learn the melody.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- 2. SERVICES LIST VIEW (drill-down from season) -->
+            <div id="services-view" style="display: none;">
+                <button class="back-btn" id="back-to-seasons">
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/></svg>
+                    Back to Seasons
+                </button>
+                <h2 class="drilldown-title" id="services-view-title">Services</h2>
+                <p class="drilldown-desc" id="services-view-desc">Select a service to see its hymns.</p>
+                <div class="drilldown-grid" id="services-grid">
+                    <div class="loading-spinner">Loading services...</div>
+                </div>
+            </div>
+
+            <!-- 3. HYMNS LIST VIEW (drill-down from service) -->
+            <div id="hymns-view" style="display: none;">
+                <button class="back-btn" id="back-to-services">
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/></svg>
+                    Back to Services
+                </button>
+                <h2 class="drilldown-title" id="hymns-view-title">Hymns</h2>
+                <p class="drilldown-desc" id="hymns-view-desc">Select a hymn to view its content.</p>
+                <div class="drilldown-grid" id="hymns-grid">
+                    <div class="loading-spinner">Loading hymns...</div>
+                </div>
+            </div>
+
+            <!-- 4. HYMN DETAILS VIEW -->
+            <div id="hymn-detail-view" style="display: none;">
+                <div class="hymn-header">
+                    <button class="back-btn" id="back-to-hymns">
+                        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/></svg>
+                        Back to Hymns
+                    </button>
+                    <span class="hymn-season-path" id="hymn-season-path">Season / Service Type</span>
+                    <h1 class="hymn-title-main" id="hymn-title-main">Hymn Name</h1>
+                </div>
+
+                <!-- Audio Player Console -->
+                <div class="hazzat-player-console" id="player-console">
+                    <!-- No audio message (shown by default) -->
+                    <div class="no-audio-message" id="no-audio-message">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.14 1.14C20.49 14.59 21 13.35 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                        <span>No recording available for this hymn.</span>
+                    </div>
+
+                    <!-- YouTube embed player (fallback when no API audio) -->
+                    <div class="youtube-player-container" id="youtube-player-container" style="display:none;">
+                        <iframe id="youtube-embed" width="100%" height="80" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius:8px;"></iframe>
+                    </div>
+
+                    <!-- Player controls (hidden until audio is loaded) -->
+                    <div id="player-controls" style="display:none;">
+                    <div class="player-main-row">
+                        <div class="playback-controls">
+                            <button class="player-play-btn" id="player-play-btn">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="white"><path fill-rule="evenodd" d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"></path></svg>
+                            </button>
+                        </div>
+                        <div class="recording-selector-box">
+                            <span class="selector-label">Recording:</span>
+                            <select class="recording-dropdown" id="recording-dropdown">
+                                <option value="">No audio available</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar slider -->
+                    <div class="audio-progress-section">
+                        <span class="time-display" id="current-time">0:00</span>
+                        <div class="timeline-container" id="timeline-progress">
+                            <div class="timeline-fill" id="timeline-fill"></div>
+                            <div class="timeline-knob" id="timeline-knob"></div>
+                        </div>
+                        <span class="time-display" id="total-time">0:00</span>
+                    </div>
+
+                    <div class="player-secondary-row">
+                        <!-- Direct Downloader Links -->
+                        <div class="player-action-buttons">
+                            <a class="downloader-btn primary" id="download-coptic-link" href="#" style="display:none;">
+                                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM1.5 13.5a.5.5 0 01.5-.5h12a.5.5 0 010 1H2a.5.5 0 01-.5-.5z"></path></svg>
+                                Download MP3
+                            </a>
+                        </div>
+
+                        <!-- Learning speed rate -->
+                        <div class="rate-speed-container">
+                            <span class="selector-label">Study Speed:</span>
+                            <button class="rate-btn" data-speed="0.5">0.5x</button>
+                            <button class="rate-btn" data-speed="0.75">0.75x</button>
+                            <button class="rate-btn active" data-speed="1.0">1.0x</button>
+                            <button class="rate-btn" data-speed="1.25">1.25x</button>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Player Citation Row -->
+                    <div class="player-citation-row" id="player-citation-row">
+                        <span class="citation-label" id="citation-text-display">Hymn content from hazzat.com</span>
+                        <a class="citation-link" id="citation-external-link" href="https://www.hazzat.com" target="_blank" style="display: none;">
+                            <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"/></svg>
+                            View on hazzat.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hazzat Notation Board -->
+                <div class="hazzat-notation-section" id="hazzat-notation-section" style="display:none;">
+                    <h3 class="hazzat-section-heading">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="gold-fill"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        Hazzat Notation
+                    </h3>
+                    <div class="format-tabs" id="format-tabs">
+                        <!-- Format tabs dynamically built by app.js -->
+                    </div>
+                    <div class="hazzat-grid" id="hazzat-grid">
+                        <!-- Hazzat font content injected here by app.js -->
+                    </div>
+                </div>
+
+                <!-- Parallel Lyrics Section -->
+                <div class="lyrics-table-section">
+                    <h3 class="lyrics-table-heading">Lyrics & Translation</h3>
+                    <div class="lyrics-col-headers">
+                        <div class="lyric-heading-col">Coptic</div>
+                        <div class="lyric-heading-col">Transliteration</div>
+                        <div class="lyric-heading-col">English</div>
+                    </div>
+                    <div id="lyrics-verses-container">
+                        <p style="color:var(--text-secondary);font-size:13px;font-style:italic;padding:16px;">Select a hymn to see lyrics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. BOOKLETS VIEW -->
+            <div id="booklets-view" style="display: none;">
+                <div class="static-page-box">
+                    <h1>Liturgical Booklets</h1>
+                    <p>Download structured PDF compilations of Coptic Orthodox hymns, texts, and notations for printing or offline tablet viewing during church services.</p>
+                    
+                    <div class="booklet-card">
+                        <div>
+                            <h3>Kiahk Midnight Praise Booklet</h3>
+                            <p style="color: var(--text-secondary); font-size: 13px;">Full Coptic, Arabic, and English texts for Kiahk Midnight Praise.</p>
+                        </div>
+                        <a href="audio/second_hoos.mp3" download class="downloader-btn primary">Download PDF</a>
+                    </div>
+                    
+                    <div class="booklet-card">
+                        <div>
+                            <h3>Great Lent Hymns Guide</h3>
+                            <p style="color: var(--text-secondary); font-size: 13px;">Weekday and Sunday Liturgy responses with Hazzat maps.</p>
+                        </div>
+                        <a href="audio/omonogenes.mp3" download class="downloader-btn primary">Download PDF</a>
+                    </div>
+
+                    <div class="booklet-card">
+                        <div>
+                            <h3>Good Friday Liturgical Booklet</h3>
+                            <p style="color: var(--text-secondary); font-size: 13px;">Complete 12th Hour Good Friday prayers, read-outs, and chants.</p>
+                        </div>
+                        <a href="audio/pek_throne.mp3" download class="downloader-btn primary">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. HELP & RITES VIEW -->
+            <div id="help-view" style="display: none;">
+                <div class="static-page-box">
+                    <h1>Understanding Hazzat & Rites</h1>
+                    
+                    <h2>What are Coptic Hazzat?</h2>
+                    <p>The <strong>Hazzat</strong> (musical shakes) represent the traditional, oral Coptic method of indexing melodies. Because Coptic hymns consist of long, complex pitch waves (where a single syllable of text might span several minutes of singing), the notation maps represent the rise, fall, flat hold, and oscillation of the voice.</p>
+
+                    <h2>How to read the Notation Map:</h2>
+                    <ul>
+                        <li><strong>Flat Hold:</strong> Represents a straight, steady tone without throat vibrato.</li>
+                        <li><strong>Vocal Shake:</strong> Indicates a throat wave or pitch wobble on the syllable.</li>
+                        <li><strong>Pitch Rise:</strong> Sing the syllable transitioning to a higher pitch scale.</li>
+                        <li><strong>Pitch Fall:</strong> Sing the syllable gliding down to a lower pitch scale.</li>
+                    </ul>
+
+                    <h2>Our Cantors:</h2>
+                    <p><strong>Deacon/Moallem Bola Mounir:</strong> Cantor at Saint Anthony Coptic Orthodox Church, Maadi, Cairo. He is a graduate of the St. Didymus Institute for Cantors, Egypt. His tutorials are highly praised for their clarity in dividing Coptic syllables.</p>
+                    <p><strong>Coptic Hymns in English:</strong> A community project dedicated to translating Coptic liturgical responses into English, singing them with identical traditional tones to maintain the spiritual legacy across generations.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="hazzat-toast" id="toast-notifier">
+        <span id="toast-message-content">Notification Message</span>
+    </div>
+
+</body>
+</html>
