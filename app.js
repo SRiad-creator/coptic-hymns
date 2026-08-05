@@ -483,111 +483,102 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ==================
-    // Curated Hymn Recordings
-    // Coptic: Ibrahim Ayad (YouTube)
+    // Curated Hymn Recordings (all video IDs verified by title)
+    // Coptic: Ibrahim Ayad / known cantors (YouTube)
     // English: Coptic Hymns in English — SoundCloud (soundcloud.com/mmguirguis)
     // ==================
     const HYMN_RECORDINGS = {
         "The Hymn of Blessing (Ten Ouosht)": {
-            coptic: { id: "14Exs-iNvco", label: "Ibrahim Ayad" },
+            coptic: { id: "rPw0eIexGvY", label: "Ibrahim Ayad" },           // The Divine Liturgy - Ten-oo-osht
             english: { url: "https://soundcloud.com/mmguirguis/search?q=ten+ouosht", label: "Coptic Hymns in English" },
         },
         "Shere Maria": {
-            coptic: { id: "5a17JslyP_U", label: "Ibrahim Ayad" },
+            coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },           // Shere Ni Maria - Ibrahim Ayad & Chorus
             english: { url: "https://soundcloud.com/mmguirguis/search?q=shere+maria", label: "Coptic Hymns in English" },
         },
         "Shere ne Maria": {
-            coptic: { id: "5a17JslyP_U", label: "Ibrahim Ayad" },
+            coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=shere+maria", label: "Coptic Hymns in English" },
         },
-        "Apinav Shopi": {
-            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/mmguirguis/search?q=apinav", label: "Coptic Hymns in English" },
-        },
         "The Hymn of the Censer (Tai Shouri)": {
-            coptic: { id: "BaoHssjFgwk", label: "Ibrahim Ayad" },
+            coptic: { id: "hXy9InYKFn0", label: "Ibrahim Ayad" },           // The Hymn of Taishoori (This Censer...)
             english: { url: "https://soundcloud.com/mmguirguis/search?q=tai+shouri", label: "Coptic Hymns in English" },
         },
         "Aspasmos Adam (Rejoice O Mary)": {
-            coptic: { id: "ZOhwRhazYxw", label: "Ibrahim Ayad" },
+            coptic: { id: "iuTsLswt2RU", label: "Ibrahim Ayad" },           // Apostles Fast: Aspasmos Adam - Mlm Ibrahim Ayad
             english: { url: "https://soundcloud.com/mmguirguis/search?q=aspasmos+adam", label: "Coptic Hymns in English" },
         },
         "Aspasmos Watos (O Lord)": {
-            coptic: { id: "ZOhwRhazYxw", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=aspasmos+watos", label: "Coptic Hymns in English" },
         },
         "Procession of the Lamb (Alleluia Fai Pe Piehoou)": {
-            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=procession+lamb", label: "Coptic Hymns in English" },
         },
         "Trisagion (Agios)": {
-            coptic: { id: "MRr5xdnAuGg", label: "Ibrahim Ayad" },
+            coptic: { id: "Me0wgXuAWKg", label: "Ibrahim Ayad" },           // Lahn Agios - Ibrahim Ayad
             english: { url: "https://soundcloud.com/mmguirguis/search?q=agios", label: "Coptic Hymns in English" },
         },
         "Psalm 150": {
-            coptic: { id: "430fPAApnvo", label: "Ibrahim Ayad" },
+            coptic: { id: "wDWjflJbHpE", label: "Ibrahim Ayad" },           // Resurrection Psalm 150 - Mlm Ibrahim Ayad
             english: { url: "https://soundcloud.com/mmguirguis/search?q=psalm+150", label: "Coptic Hymns in English" },
         },
         "Arise O Children of the Light (Ten Theno)": {
-            coptic: { id: "lCoJVzpJmpE", label: "Ibrahim Ayad" },
+            coptic: { id: "lCoJVzpJmpE", label: "Ibrahim Ayad" },           // Ten Theno: Arise O Children of Light - Ibrahim Ayad
             english: { url: "https://soundcloud.com/mmguirguis/search?q=ten+theno", label: "Coptic Hymns in English" },
         },
         "Penishti": {
-            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=penishti", label: "Coptic Hymns in English" },
         },
         "Penishti (Great)": {
-            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=penishti", label: "Coptic Hymns in English" },
         },
         "Psalm 116 (Ni Ethnos Teero)": {
-            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            coptic: { id: "hdKatF1QJjw", label: "Ibrahim Ayad" },           // Niethnos Teero (Vesper Praises)
             english: { url: "https://soundcloud.com/mmguirguis/search?q=ni+ethnos", label: "Coptic Hymns in English" },
         },
         "Doxa Patri": {
-            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            coptic: { id: "MlOg7qS3nTQ", label: "Ibrahim Ayad" },           // The Divine Liturgy - Zoxa Patri
             english: { url: "https://soundcloud.com/mmguirguis/search?q=doxa+patri", label: "Coptic Hymns in English" },
         },
         "Amen Amen Amen Ton Thanaton": {
-            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            coptic: { id: "WRFJdtM5XmE", label: "Coptic" },                 // Amen Amen Amen - Ton Thanaton (Coptic)
             english: { url: "https://soundcloud.com/mmguirguis/search?q=ton+thanaton", label: "Coptic Hymns in English" },
         },
         "Morning Doxology": {
-            coptic: { id: "ghWnzc-GeNA", label: "Ibrahim Ayad" },
+            coptic: { id: "XKcNDpbo2Dk", label: "Ibrahim Ayad" },           // Morning Doxology
             english: { url: "https://soundcloud.com/mmguirguis/search?q=morning+doxology", label: "Coptic Hymns in English" },
         },
         "Apetjeek Evol": {
-            coptic: { id: "FFzoNBkKC_g", label: "Ibrahim Ayad" },
+            coptic: { id: "FFzoNBkKC_g", label: "Coptic Lent" },            // Lahn Abtgeek Evol (Coptic Lent)
             english: { url: "https://soundcloud.com/mmguirguis/search?q=apetjeek", label: "Coptic Hymns in English" },
         },
         "The Creed": {
-            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/search?q=creed", label: "Coptic Hymns in English" },
         },
         "The Bread of Life": {
-            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            coptic: { id: "lStifjX0u1U", label: "Coptic Hymn" },            // Pi-oik - The Bread of Life Coptic Hymn
             english: { url: "https://soundcloud.com/mmguirguis/search?q=bread+of+life", label: "Coptic Hymns in English" },
         },
         "Lord Have Mercy (Keriye Eleyson)": {
-            coptic: { id: "3Sheg4S_-m4", label: "Ibrahim Ayad" },
+            coptic: { id: "V8u16f3ux8I", label: "Ibrahim Ayad" },           // Lahn Kerie Eleison
             english: { url: "https://soundcloud.com/mmguirguis/search?q=kyrie+eleison", label: "Coptic Hymns in English" },
         },
         "Sotis": {
-            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            coptic: { id: "lfjSs6lRfBE", label: "Coptic" },                 // Fraction Response - Sotees Amen (Coptic)
             english: { url: "https://soundcloud.com/mmguirguis/search?q=sotis", label: "Coptic Hymns in English" },
         },
         "Nisavev (All You Wise Men)": {
-            coptic: { id: "dDxPk7ZVBMI", label: "Ibrahim Ayad" },
+            coptic: { id: "6Stq6psGcuU", label: "Malak Rizkalla" },         // Nisavev tiro
             english: { url: "https://soundcloud.com/mmguirguis/search?q=nisavev", label: "Coptic Hymns in English" },
         },
+        "Apinav Shopi": {
+            english: { url: "https://soundcloud.com/mmguirguis/search?q=apinav", label: "Coptic Hymns in English" },
+        },
         "One is the All Holy Father": {
-            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
         "As it Was (Osberein)": {
-            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
-        },
-        "Gospel Response": {
-            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
     };
 
