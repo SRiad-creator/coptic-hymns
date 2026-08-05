@@ -328,7 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const noAudioMsg = document.getElementById("no-audio-message");
         const playerControls = document.getElementById("player-controls");
         const ytContainer = document.getElementById("youtube-player-container");
-        const ytEmbed = document.getElementById("youtube-embed");
 
         // Check for Audio format (format 5) and load into custom player
         const audioFormat = formats.find(f => f.id.endsWith("/formats/5"));
@@ -336,21 +335,37 @@ document.addEventListener("DOMContentLoaded", () => {
             ytContainer.style.display = "none";
             loadAudioForPlayer(audioFormat.id);
         } else {
-            // No API audio — try YouTube fallback
-            const ytId = findYouTubeId(hymnName);
-            if (ytId) {
+            playerControls.style.display = "none";
+            downloadCopticLink.style.display = "none";
+
+            // Try curated recordings fallback
+            const recordings = findRecordings(hymnName);
+            if (recordings) {
                 noAudioMsg.style.display = "none";
-                playerControls.style.display = "none";
+                // Build recording links HTML
+                let linksHtml = '';
+                if (recordings.coptic) {
+                    linksHtml += `<a href="https://www.youtube.com/watch?v=${recordings.coptic.id}" target="_blank" class="recording-link coptic-link">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+                        ☦️ Coptic — ${recordings.coptic.label}
+                    </a>`;
+                }
+                if (recordings.english) {
+                    linksHtml += `<a href="https://www.youtube.com/watch?v=${recordings.english.id}" target="_blank" class="recording-link english-link">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+                        🇬🇧 English — ${recordings.english.label}
+                    </a>`;
+                }
+                ytContainer.innerHTML = `<div class="recordings-links-section">
+                    <span class="recordings-label">🎵 Listen to Recordings</span>
+                    <div class="recordings-links">${linksHtml}</div>
+                </div>`;
                 ytContainer.style.display = "block";
-                ytEmbed.src = `https://www.youtube.com/embed/${ytId}?rel=0`;
-                recordingDropdown.innerHTML = `<option value="">YouTube Recording</option>`;
-                downloadCopticLink.style.display = "none";
+                recordingDropdown.innerHTML = `<option value="">Recordings available</option>`;
             } else {
                 noAudioMsg.style.display = "flex";
-                playerControls.style.display = "none";
                 ytContainer.style.display = "none";
                 recordingDropdown.innerHTML = '<option value="">No audio available</option>';
-                downloadCopticLink.style.display = "none";
             }
         }
 
@@ -464,53 +479,125 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ==================
-    // YouTube fallback recordings (for hymns with no API audio format)
-    // Video IDs sourced from YouTube search results
+    // Curated Hymn Recordings
+    // Coptic: Ibrahim Ayad (YouTube)
+    // English: Coptic Hymns in English (YouTube/SoundCloud)
     // ==================
-    const YOUTUBE_VIDEOS = {
-        "The Hymn of Blessing (Ten Ouosht)": "6zJpLtsvToo",
-        "Shere Maria": "lOqdp9jUecw",
-        "Shere ne Maria": "lOqdp9jUecw",
-        "Apinav Shopi": "RzFDLW6TlKI",
-        "The Hymn of the Censer (Tai Shouri)": "Pxv8VMHesrM",
-        "Aspasmos Adam (Rejoice O Mary)": "eymaS5cpAAA",
-        "Aspasmos Watos (O Lord)": "isvJ-YBmFuw",
-        "Procession of the Lamb (Alleluia Fai Pe Piehoou)": "i40XHgdWcPg",
-        "Trisagion (Agios)": "hzFeYBdRiqI",
-        "Psalm 150": "RWj08dIy1xc",
-        "Arise O Children of the Light (Ten Theno)": "lCoJVzpJmpE",
-        "Penishti": "0ioG_14cInM",
-        "Penishti (Great)": "0ioG_14cInM",
-        "Psalm 116 (Ni Ethnos Teero)": "RxH_-akktqA",
-        "Doxa Patri": "MXxninuq1uU",
-        "Amen Amen Amen Ton Thanaton": "jbfptU7Lnzc",
-        "Morning Doxology": "ghWnzc-GeNA",
-        "Apetjeek Evol": "dLzPKU9J318",
-        "The Creed": "skS-QWc6EJE",
-        "The Bread of Life": "IvD0XJzOWQ4",
-        "Lord Have Mercy (Keriye Eleyson)": "1NOhgAB_JoY",
-        "Sotis": "2ouoZbGEDl4",
-        "Nisavev (All You Wise Men)": "dDxPk7ZVBMI",
-        "One is the All Holy Father": "jbfptU7Lnzc",
-        "As it Was (Osberein)": "jbfptU7Lnzc",
-        "Gospel Response": "RxH_-akktqA",
-        "Al El Qorban": "i40XHgdWcPg",
-        "Pray for these Holy and Precious Gifts": "i40XHgdWcPg",
+    const HYMN_RECORDINGS = {
+        "The Hymn of Blessing (Ten Ouosht)": {
+            coptic: { id: "14Exs-iNvco", label: "Ibrahim Ayad" },
+            english: { id: "ImcJI4mo1sw", label: "Coptic Hymns in English" },
+        },
+        "Shere Maria": {
+            coptic: { id: "5a17JslyP_U", label: "Ibrahim Ayad" },
+            english: { id: "lOqdp9jUecw", label: "Coptic Hymns in English" },
+        },
+        "Shere ne Maria": {
+            coptic: { id: "5a17JslyP_U", label: "Ibrahim Ayad" },
+            english: { id: "lOqdp9jUecw", label: "Coptic Hymns in English" },
+        },
+        "Apinav Shopi": {
+            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
+            english: { id: "MGN_qKERTz8", label: "Coptic Hymns in English" },
+        },
+        "The Hymn of the Censer (Tai Shouri)": {
+            coptic: { id: "BaoHssjFgwk", label: "Ibrahim Ayad" },
+            english: { id: "NY9ciV6diTQ", label: "Coptic Hymns in English" },
+        },
+        "Aspasmos Adam (Rejoice O Mary)": {
+            coptic: { id: "ZOhwRhazYxw", label: "Ibrahim Ayad" },
+            english: { id: "eymaS5cpAAA", label: "Coptic Hymns in English" },
+        },
+        "Aspasmos Watos (O Lord)": {
+            coptic: { id: "ZOhwRhazYxw", label: "Ibrahim Ayad" },
+            english: { id: "P6Ve3KFgxYo", label: "Coptic Hymns in English" },
+        },
+        "Procession of the Lamb (Alleluia Fai Pe Piehoou)": {
+            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
+            english: { id: "vD9X5rlSWiE", label: "Coptic Hymns in English" },
+        },
+        "Trisagion (Agios)": {
+            coptic: { id: "MRr5xdnAuGg", label: "Ibrahim Ayad" },
+            english: { id: "aX-X-1NZgoY", label: "Coptic Hymns in English" },
+        },
+        "Psalm 150": {
+            coptic: { id: "430fPAApnvo", label: "Ibrahim Ayad" },
+            english: { id: "VGS1WsP_83g", label: "Coptic Hymns in English" },
+        },
+        "Arise O Children of the Light (Ten Theno)": {
+            coptic: { id: "lCoJVzpJmpE", label: "Ibrahim Ayad" },
+            english: { id: "ImcJI4mo1sw", label: "Coptic Hymns in English" },
+        },
+        "Penishti": {
+            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            english: { id: "0qY9uRGrztk", label: "Coptic Hymns in English" },
+        },
+        "Penishti (Great)": {
+            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            english: { id: "0qY9uRGrztk", label: "Coptic Hymns in English" },
+        },
+        "Psalm 116 (Ni Ethnos Teero)": {
+            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            english: { id: "98C51MtDFrE", label: "Coptic Hymns in English" },
+        },
+        "Doxa Patri": {
+            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            english: { id: "lWVwbfOkKFU", label: "Coptic Hymns in English" },
+        },
+        "Amen Amen Amen Ton Thanaton": {
+            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            english: { id: "_SSwaG5_zpg", label: "Coptic Hymns in English" },
+        },
+        "Morning Doxology": {
+            coptic: { id: "ghWnzc-GeNA", label: "Ibrahim Ayad" },
+            english: { id: "GJcvNYPxEQk", label: "Coptic Hymns in English" },
+        },
+        "Apetjeek Evol": {
+            coptic: { id: "FFzoNBkKC_g", label: "Ibrahim Ayad" },
+            english: { id: "lWVwbfOkKFU", label: "Coptic Hymns in English" },
+        },
+        "The Creed": {
+            coptic: { id: "B1ikagliaUM", label: "Ibrahim Ayad" },
+            english: { id: "g-dK6raMeG4", label: "Coptic Hymns in English" },
+        },
+        "The Bread of Life": {
+            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            english: { id: "AZg5zhe0RNU", label: "Coptic Hymns in English" },
+        },
+        "Lord Have Mercy (Keriye Eleyson)": {
+            coptic: { id: "3Sheg4S_-m4", label: "Ibrahim Ayad" },
+            english: { id: "2ouoZbGEDl4", label: "Coptic Hymns in English" },
+        },
+        "Sotis": {
+            coptic: { id: "F4HbjtB1MOI", label: "Ibrahim Ayad" },
+            english: { id: "ImcJI4mo1sw", label: "Coptic Hymns in English" },
+        },
+        "Nisavev (All You Wise Men)": {
+            coptic: { id: "dDxPk7ZVBMI", label: "Ibrahim Ayad" },
+        },
+        "One is the All Holy Father": {
+            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+            english: { id: "_SSwaG5_zpg", label: "Coptic Hymns in English" },
+        },
+        "As it Was (Osberein)": {
+            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+        },
+        "Gospel Response": {
+            coptic: { id: "kYwhdoh5f5Y", label: "Ibrahim Ayad" },
+        },
     };
 
     // Fuzzy match: try exact name, then partial substring matches
-    function findYouTubeId(hymnName) {
-        if (YOUTUBE_VIDEOS[hymnName]) return YOUTUBE_VIDEOS[hymnName];
-        // Try substring match
+    function findRecordings(hymnName) {
+        if (HYMN_RECORDINGS[hymnName]) return HYMN_RECORDINGS[hymnName];
         const lower = hymnName.toLowerCase();
-        for (const [key, id] of Object.entries(YOUTUBE_VIDEOS)) {
+        for (const [key, rec] of Object.entries(HYMN_RECORDINGS)) {
             if (lower.includes(key.toLowerCase()) || key.toLowerCase().includes(lower)) {
-                return id;
+                return rec;
             }
         }
         return null;
     }
-
 
     // Render fallback lyrics in the same 3-column layout as API lyrics
     function renderFallbackLyrics(verses) {
@@ -969,9 +1056,7 @@ document.addEventListener("DOMContentLoaded", () => {
         timelineFill.style.width = "0%";
         currentTimeEl.textContent = "0:00";
         totalTimeEl.textContent = "0:00";
-        // Also stop any YouTube embed
-        const ytEmbed = document.getElementById("youtube-embed");
-        if (ytEmbed) ytEmbed.src = "";
+        // Hide recordings links container
         const ytContainer = document.getElementById("youtube-player-container");
         if (ytContainer) ytContainer.style.display = "none";
     }

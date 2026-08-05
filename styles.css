@@ -1032,6 +1032,62 @@ body {
     overflow: hidden;
 }
 
+/* Curated recording links */
+.recordings-links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0;
+}
+.recordings-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+.recordings-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.recording-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+.recording-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.recording-link.coptic-link {
+    border-color: var(--accent-gold-dark);
+    color: var(--accent-gold-dark);
+}
+.recording-link.coptic-link:hover {
+    background: var(--accent-gold-dark);
+    color: white;
+}
+.recording-link.english-link {
+    border-color: #5b8def;
+    color: #5b8def;
+}
+.recording-link.english-link:hover {
+    background: #5b8def;
+    color: white;
+}
+.recording-link svg {
+    flex-shrink: 0;
+}
+
 /* Hazzat Notation Sheets */
 .hazzat-notation-section {
     background-color: var(--bg-card);
