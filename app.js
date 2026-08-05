@@ -510,7 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/mmguirguis/rejoice-o-mary", label: "Coptic Hymns in English" },
         },
         "Aspasmos Watos (O Lord)": {
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+aspasmos+watos", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/watos-aspasmos-introduction-gregorian", label: "Coptic Hymns in English" },
         },
         "Procession of the Lamb (Alleluia Fai Pe Piehoou)": {
             english: { url: "https://soundcloud.com/mmguirguis/alleluia-this-is-the-day", label: "Coptic Hymns in English" },
@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Psalm 150": {
             coptic: { id: "wDWjflJbHpE", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+psalm+150", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/psalm-150-standard-2", label: "Coptic Hymns in English" },
         },
         "Arise O Children of the Light (Ten Theno)": {
             coptic: { id: "lCoJVzpJmpE", label: "Ibrahim Ayad" },
