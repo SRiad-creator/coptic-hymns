@@ -916,6 +916,10 @@ document.addEventListener("DOMContentLoaded", () => {
         result = result.replace(/\btheotokos\b/gi, "Theotokos");
         result = result.replace(/\bPennouti\b/gi, "Pennouti");
 
+        // Pneuma (Spirit) — upsilon after 'e' incorrectly becomes 'ee'
+        result = result.replace(/pneema/gi, "Pnevma");
+        result = result.replace(/epneema/gi, "ePnevma");
+
         // Common biblical/saint names → standard English forms
         result = result.replace(/\bGavriil\b/g, "Gabriel");
         result = result.replace(/\bMikhail\b/g, "Michael");
