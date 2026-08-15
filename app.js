@@ -241,6 +241,118 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             grid.appendChild(card);
         });
+
+        // Inject custom bonus hymns not in the hazzat.com API
+        const CUSTOM_HYMNS = {
+            'Liturgy of the Word': [
+                { name: 'The Golden Censer (Ti Shouri)', after: 'The Hymn of the Censer (Tai Shouri)' },
+                { name: 'Gospel Response (O-oniato)', after: 'Gospel Response' },
+            ]
+        };
+        const customList = CUSTOM_HYMNS[serviceName];
+        if (customList) {
+            customList.forEach(custom => {
+                const card = document.createElement("div");
+                card.className = "drilldown-card";
+                card.innerHTML = `
+                    <div class="drilldown-card-icon">🎵</div>
+                    <div class="drilldown-card-info">
+                        <div class="drilldown-card-title">${custom.name}</div>
+                    </div>
+                    <svg class="drilldown-card-arrow" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
+                `;
+                card.addEventListener("click", () => {
+                    loadCustomHymn(custom.name, seasonName, serviceName);
+                });
+                // Insert after the related hymn card
+                const cards = grid.querySelectorAll('.drilldown-card');
+                let inserted = false;
+                cards.forEach(existingCard => {
+                    const title = existingCard.querySelector('.drilldown-card-title');
+                    if (title && title.textContent === custom.after && !inserted) {
+                        existingCard.after(card);
+                        inserted = true;
+                    }
+                });
+                if (!inserted) grid.appendChild(card);
+            });
+        }
+    }
+
+    // ==================
+    // Custom Hymn Loading (for hymns not in hazzat.com API)
+    // ==================
+    function loadCustomHymn(hymnName, seasonName, serviceName) {
+        showView("hymn");
+        hymnSeasonPath.textContent = `${seasonName} → ${serviceName}`;
+        hymnTitleMain.textContent = hymnName;
+
+        // Get hazzat section reference
+        const hazzatSection = document.getElementById("hazzat-notation-section");
+
+        // Clear previous content
+        formatTabsEl.innerHTML = "";
+        hazzatGrid.innerHTML = "";
+        hazzatSection.style.display = "none";
+
+        // Load fallback lyrics
+        const fallback = FALLBACK_LYRICS[hymnName];
+        if (fallback) {
+            renderFallbackLyrics(fallback);
+        } else {
+            lyricsContainer.innerHTML = '<p style="color:var(--text-secondary);padding:16px;">No text content available.</p>';
+        }
+
+        // Load recordings
+        stopAudio();
+        const noAudioMsg = document.getElementById("no-audio-message");
+        const playerControls = document.getElementById("player-controls");
+        const ytContainer = document.getElementById("youtube-player-container");
+        playerControls.style.display = "none";
+        downloadCopticLink.style.display = "none";
+
+        const recordings = findRecordings(hymnName);
+        if (recordings) {
+            noAudioMsg.style.display = "none";
+            let linksHtml = '';
+            const ytIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>`;
+            const scIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11.56 8.87V17h8.76c1.85 0 2.68-1.4 2.68-2.81 0-1.4-.83-2.82-2.68-2.82-.52 0-.95.13-1.35.35-.07-3.38-2.73-5.65-5.13-5.65-1.01 0-1.66.33-2.28.8v1zm-1.93-.04V17h1.24V8.07c-.37.2-.81.5-1.24.76zM7.51 9.83V17h1.24V9.4c-.38.14-.81.28-1.24.43zm-2.46 1.6V17h1.23v-4.85c-.38.12-.8.18-1.23.28zm-2.47.93V17h1.24v-3.95c-.44.05-.81.17-1.24.31zM0 14.29V17h1.24v-2.32c-.42-.12-.83-.25-1.24-.39z"/></svg>`;
+            if (recordings.coptic) {
+                linksHtml += `<a href="https://www.youtube.com/watch?v=${recordings.coptic.id}" target="_blank" class="recording-link coptic-link">
+                    ${ytIcon} ☦️ Coptic — ${recordings.coptic.label}
+                </a>`;
+            }
+            if (recordings.english) {
+                const engUrl = recordings.english.url || `https://www.youtube.com/watch?v=${recordings.english.id}`;
+                linksHtml += `<a href="${engUrl}" target="_blank" class="recording-link english-link">
+                    ${scIcon} 🇬🇧 English — ${recordings.english.label}
+                </a>`;
+            }
+            let localAudioHtml = '';
+            if (recordings.local) {
+                const audioIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`;
+                recordings.local.forEach(loc => {
+                    localAudioHtml += `<div class="local-recording">
+                        <span class="local-recording-label">${audioIcon} ${loc.label}</span>
+                        <audio controls preload="none" src="recordings/${loc.file}"></audio>
+                    </div>`;
+                });
+            }
+            ytContainer.innerHTML = `<div class="recordings-links-section">
+                <span class="recordings-label">🎵 Listen to Recordings</span>
+                <div class="recordings-links">${linksHtml}</div>
+                ${localAudioHtml}
+            </div>`;
+            ytContainer.style.display = "block";
+        } else {
+            noAudioMsg.style.display = "flex";
+            ytContainer.style.display = "none";
+        }
+
+        // Set citation link
+        const citationLink = document.getElementById("hazzat-citation-link");
+        citationLink.href = "#";
+        citationLink.style.display = "none";
     }
 
     // ==================
@@ -482,6 +594,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "Gospel Response": [
             { coptic: "Pioui1t `mpikocmoc `tyrf.", trans: "Pi-ouisht empi-kosmos tirf.", eng: "The salvation of the whole world." },
         ],
+        "Gospel Response (O-oniato)": [
+            { coptic: "`Wouniatou qen oumeymyi@ ny=e=;=u `nte pai`ehoou@ piouai piouai kata pefran@ nimenra] `nte P=,=c.", trans: "Wouniatou khen ou-methmi, ni-ethowab ente pai-ehoou, pi-ouai pi-ouai kata pef-ran, ni-menrati ente Pi-Ekhristos.", eng: "Blessed are they in truth, the saints of this day, each one according to his name, the beloved of Christ." },
+            { coptic: "Ari`precbeuin `ehri `ejwn@ `w tenn=y=c `nnyb tyren ]Yeotokoc@ Maria `ymau `mPencwtyr@ `ntefxa nennobi nan ebol.", trans: "Ari-presvevin ehri egon, o ten-nis en-neeb tiren ti-Theotokos, Maria ethmav em-Pen-Soteer, entef-kha nen-novi nan evol.", eng: "Intercede on our behalf, O lady of us all, the Theotokos, Mary the Mother of our Savior, that He may forgive us our sins." },
+            { coptic: "Twbh `mP=o=c `e`hri `ejwn@ `w pi;e`wrimoc `n`euaggelictyc@ `abba Markoc pi`apoctoloc@ `ntefxa nenobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, o pi-theorimos en-evangelistis, abba Markos pi-apostolos, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, O beholder of God the Evangelist, Abba Mark the Apostle, that He may forgive us our sins." },
+            { coptic: "Je `fcmarwout `nje Viwt nem `pSyri@ nem piPneuma =e=;=u@ ]`triac `etjyk `ebol@ tenouwst `mmoc ten]`wou nac.", trans: "Je ef-esmaroout enje Fiot nem ep-Shiri, nem pi-Pneuma Ethouav, ti-Trias et-jik evol, ten-ouosht emmos ten-ti-oou nas.", eng: "Blessed be the Father and the Son and the Holy Spirit, the perfect Trinity. We worship Him and glorify Him." },
+        ],
         "Amen Amen Amen Ton Thanaton": [
             { coptic: "`Amyn `amyn `amyn.", trans: "Amin, Amin, Amin.", eng: "Amen, Amen, Amen." },
             { coptic: "Ton ;anaton cou Kuri`e kataggelomen.", trans: "Ton thanaton sou Kyrie katangellomen.", eng: "Your death, O Lord, we proclaim." },
@@ -616,6 +734,10 @@ document.addEventListener("DOMContentLoaded", () => {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
         "Gospel Response": {
+            english: { url: "https://soundcloud.com/mmguirguis/gospel-response-standard", label: "Coptic Hymns in English" },
+            local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
+        },
+        "Gospel Response (O-oniato)": {
             english: { url: "https://soundcloud.com/mmguirguis/gospel-response-standard", label: "Coptic Hymns in English" },
             local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
         },
