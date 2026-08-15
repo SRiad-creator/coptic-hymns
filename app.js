@@ -108,7 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Back buttons
-    document.getElementById("back-to-seasons").addEventListener("click", () => showView("welcome"));
+    document.getElementById("back-to-seasons").addEventListener("click", () => {
+        setHash('/');
+        showView("welcome");
+    });
     document.getElementById("back-to-services").addEventListener("click", () => {
         loadServices(navState.seasonId, navState.seasonName);
     });
@@ -133,9 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================
     // Drill-down: Season → Services
     // ==================
-    async function loadServices(seasonId, seasonName) {
+    async function loadServices(seasonId, seasonName, skipHash) {
         navState.seasonId = seasonId;
         navState.seasonName = seasonName;
+        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}`);
         showView("services");
 
         document.getElementById("services-view-title").textContent = seasonName;
@@ -164,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <svg class="drilldown-card-arrow" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
             `;
             card.addEventListener("click", () => {
-                loadHymnsList(seasonId, serviceId, seasonName, service.name);
+                loadHymnsList(seasonId, serviceId, seasonName, service.name, false);
             });
             grid.appendChild(card);
         });
@@ -173,11 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================
     // Drill-down: Service → Hymns list
     // ==================
-    async function loadHymnsList(seasonId, serviceId, seasonName, serviceName) {
+    async function loadHymnsList(seasonId, serviceId, seasonName, serviceName, skipHash) {
         navState.seasonId = seasonId;
         navState.seasonName = seasonName;
         navState.serviceId = serviceId;
         navState.serviceName = serviceName;
+        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}/service/${serviceId}/${encodeURIComponent(serviceName)}`);
         showView("hymns");
 
         document.getElementById("hymns-view-title").textContent = `${seasonName} — ${serviceName}`;
@@ -237,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <svg class="drilldown-card-arrow" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
             `;
             card.addEventListener("click", () => {
-                loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymn.name);
+                loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymn.name, false);
             });
             grid.appendChild(card);
         });
@@ -262,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <svg class="drilldown-card-arrow" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/></svg>
                 `;
                 card.addEventListener("click", () => {
-                    loadCustomHymn(custom.name, seasonName, serviceName);
+                    loadCustomHymn(custom.name, seasonName, serviceName, false);
                 });
                 // Insert after the related hymn card
                 const cards = grid.querySelectorAll('.drilldown-card');
@@ -282,7 +287,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================
     // Custom Hymn Loading (for hymns not in hazzat.com API)
     // ==================
-    function loadCustomHymn(hymnName, seasonName, serviceName) {
+    function loadCustomHymn(hymnName, seasonName, serviceName, skipHash) {
+        if (!skipHash) setHash(`/season/${navState.seasonId}/${encodeURIComponent(seasonName)}/service/${navState.serviceId}/${encodeURIComponent(serviceName)}/custom/${encodeURIComponent(hymnName)}`);
         showView("hymn");
         hymnSeasonPath.textContent = `${seasonName} → ${serviceName}`;
         hymnTitleMain.textContent = hymnName;
@@ -358,7 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================
     // Hymn Loading
     // ==================
-    async function loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymnName) {
+    async function loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymnName, skipHash) {
+        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}/service/${serviceId}/${encodeURIComponent(serviceName)}/hymn/${hymnId}/${encodeURIComponent(hymnName)}`);
         showView("hymn");
         hymnSeasonPath.textContent = `${seasonName} → ${serviceName}`;
         hymnTitleMain.textContent = hymnName;
@@ -1332,8 +1339,70 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==================
+    // URL Hash Routing (deep linking)
+    // ==================
+    let suppressHashChange = false;
+    function setHash(hash) {
+        suppressHashChange = true;
+        window.location.hash = hash;
+        // Reset flag after the hashchange event fires
+        setTimeout(() => { suppressHashChange = false; }, 0);
+    }
+
+    async function handleHash() {
+        const hash = decodeURIComponent(window.location.hash.slice(1)); // remove #
+        if (!hash || hash === '/') {
+            showView('welcome');
+            return;
+        }
+
+        // Parse: /season/{id}/{name}/service/{id}/{name}/hymn/{id}/{name}
+        const parts = hash.split('/');
+        // parts[0] = '', parts[1] = 'season', parts[2] = id, parts[3] = name, ...
+        if (parts[1] === 'season' && parts[2]) {
+            const seasonId = parts[2];
+            const seasonName = decodeURIComponent(parts[3] || '');
+
+            if (parts[4] === 'service' && parts[5]) {
+                const serviceId = parts[5];
+                const serviceName = decodeURIComponent(parts[6] || '');
+
+                if (parts[7] === 'hymn' && parts[8]) {
+                    const hymnId = parts[8];
+                    const hymnName = decodeURIComponent(parts[9] || '');
+                    navState.seasonId = seasonId;
+                    navState.seasonName = seasonName;
+                    navState.serviceId = serviceId;
+                    navState.serviceName = serviceName;
+                    await loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymnName, true);
+                } else if (parts[7] === 'custom' && parts[8]) {
+                    const hymnName = decodeURIComponent(parts[8]);
+                    navState.seasonId = seasonId;
+                    navState.seasonName = seasonName;
+                    navState.serviceId = serviceId;
+                    navState.serviceName = serviceName;
+                    loadCustomHymn(hymnName, seasonName, serviceName, true);
+                } else {
+                    await loadHymnsList(seasonId, serviceId, seasonName, serviceName, true);
+                }
+            } else {
+                await loadServices(seasonId, seasonName, true);
+            }
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        if (!suppressHashChange) handleHash();
+    });
+
+    // ==================
     // Initialize
     // ==================
     loadSeasons();
-    showView("welcome");
+    // Check for deep link hash on first load
+    if (window.location.hash && window.location.hash !== '#') {
+        handleHash();
+    } else {
+        showView('welcome');
+    }
 });
