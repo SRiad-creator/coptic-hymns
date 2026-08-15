@@ -558,8 +558,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { coptic: "Kuri`e `ele`ycon.", trans: "Kyrie eleison.", eng: "Lord, have mercy." },
         ],
         "Doxa Patri": [
-            { coptic: "Doxa Patri ke Uiw ke `agi`w `pneumati.", trans: "Doxa Patri ke Uio ke Agio Pnevmati.", eng: "Glory to the Father and to the Son and to the Holy Spirit." },
-            { coptic: "Ke nun ke `a`i ke ictouc `e`wnac twn `e`wnwn@ `amyn.", trans: "Ke nun ke ai ke is tous eonas ton eonon. Amin.", eng: "Now and ever and unto the ages of ages. Amen." },
+            { coptic: "Doxa Patri ke Uiw ke `agi`w `pneumati.", trans: "Doxa Patri ke io ke Agio Pnevmati.", eng: "Glory to the Father and to the Son and to the Holy Spirit." },
+            { coptic: "Ke nun ke `a`i ke ictouc `e`wnac twn `e`wnwn@ `amyn.", trans: "Ke nin ke ai ke is tous eonas ton eonon. Amin.", eng: "Now and ever and unto the ages of ages. Amen." },
         ],
         "Pray for these Holy and Precious Gifts": [
             { coptic: "Proceu[ac;e `uper twn `agiwn timiwn dwron toutwn@", trans: "Prosevksasthe yper ton agion timion doron touton,", eng: "Pray for these holy and precious gifts," },
