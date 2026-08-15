@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const HYMN_RECORDINGS = {
         "The Hymn of Blessing (Ten Ouosht)": {
             coptic: { id: "rPw0eIexGvY", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+ten+ouosht", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/hail-to-mary", label: "Coptic Hymns in English" },
         },
         "Shere Maria": {
             coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },
@@ -550,7 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Trisagion (Agios)": {
             coptic: { id: "Me0wgXuAWKg", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/mmguirguis/agios", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-trisagion-2", label: "Coptic Hymns in English" },
         },
         "Psalm 150": {
             coptic: { id: "wDWjflJbHpE", label: "Ibrahim Ayad" },
@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Apetjeek Evol": {
             coptic: { id: "FFzoNBkKC_g", label: "Coptic Lent" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+apetjeek", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/perfect-is-the-blessing-1", label: "Coptic Hymns in English" },
         },
         "The Creed": {
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+creed", label: "Coptic Hymns in English" },
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Sotis": {
             coptic: { id: "lfjSs6lRfBE", label: "Coptic" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+sotis", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/saved-amen-1", label: "Coptic Hymns in English" },
         },
         "Nisavev (All You Wise Men)": {
             coptic: { id: "6Stq6psGcuU", label: "Malak Rizkalla" },
