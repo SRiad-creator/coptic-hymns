@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { coptic: "Kuri`e `ele`ycon.", trans: "Kyrie eleison.", eng: "Lord, have mercy." },
         ],
         "Doxa Patri": [
-            { coptic: "Doxa Patri ke Uiw ke `agi`w `pneumati.", trans: "Doxa Patri ke Uio ke Agio Pneumati.", eng: "Glory to the Father and to the Son and to the Holy Spirit." },
+            { coptic: "Doxa Patri ke Uiw ke `agi`w `pneumati.", trans: "Doxa Patri ke Uio ke Agio Pnevmati.", eng: "Glory to the Father and to the Son and to the Holy Spirit." },
             { coptic: "Ke nun ke `a`i ke ictouc `e`wnac twn `e`wnwn@ `amyn.", trans: "Ke nun ke ai ke is tous eonas ton eonon. Amin.", eng: "Now and ever and unto the ages of ages. Amen." },
         ],
         "Pray for these Holy and Precious Gifts": [
@@ -597,9 +597,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Gospel Response (O-oniato)": [
             { coptic: "`Wouniatou qen oumeymyi@ ny=e=;=u `nte pai`ehoou@ piouai piouai kata pefran@ nimenra] `nte P=,=c.", trans: "O-oniato khen ou-methmi, ni-ethowab ente pai-ehoou, pi-ouai pi-ouai kata pef-ran, ni-menrati ente Pi-Ekhristos.", eng: "Blessed are they in truth, the saints of this day, each one according to his name, the beloved of Christ." },
             { coptic: "Ari`precbeuin `ehri `ejwn@ `w tenn=y=c `nnyb tyren ]Yeotokoc@ Maria `ymau `mPencwtyr@ `ntefxa nennobi nan ebol.", trans: "Ari-presvevin ehri egon, o ten-nis en-neeb tiren ti-Theotokos, Maria ethmav em-Pen-Soteer, entef-kha nen-novi nan evol.", eng: "Intercede on our behalf, O lady of us all, the Theotokos, Mary the Mother of our Savior, that He may forgive us our sins." },
-            { coptic: "Twbh `mP=o=c `e`hri `ejwn@ peniwt =e=;=u `ndikeoc@ pi`;myi Iwcyv pihamse@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, pen-iot ethouav en-dikeos, pi-ethmi Yosef pi-hamshe, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, our holy righteous father, saint Joseph the carpenter, that He may forgive us our sins." },
+            { coptic: "Twbh `mP=o=c `e`hri `ejwn@ peniwt =e=;=u `ndikeoc@ pi`;myi Iwcyv pihamse@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, pen-iot ethouab en-dikeos, pi-ethmi Yosef pi-hamshe, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, our holy righteous father, saint Joseph the carpenter, that He may forgive us our sins." },
             { coptic: "Twbh `mP=o=c `e`hri `ejwn@ `w niselet `nte P=,=c@ Barbara nem Iwliana@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, o ni-shelet ente Pi-Ekhristos, Barbara nem Yoliana, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, O brides of Christ, Barbara and Juliana, that He may forgive us our sins." },
-            { coptic: "Twbh `mP=o=c `e`hri `ejwn@ peniwt e;ouab `nackityc@ `abba Noufer pi`ana,writyc@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, pen-iot ethouav en-askitis, abba Noufer pi-anakhoritees, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, O our holy father the ascetic, Abba Noufer the Hermit, that He may forgive us our sins." },
+            { coptic: "Twbh `mP=o=c `e`hri `ejwn@ peniwt e;ouab `nackityc@ `abba Noufer pi`ana,writyc@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, pen-iot ethouab en-askitis, abba Noufer pi-anakhoritees, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, O our holy father the ascetic, Abba Noufer the Hermit, that He may forgive us our sins." },
             { coptic: "Je `fcmarwout `nje Viwt nem `pSyri@ nem piPneuma =e=;=u@ ]`triac `etjyk `ebol@ tenouwst `mmoc ten]`wou nac.", trans: "Je ef-esmaroout enje Fiot nem ep-Shiri, nem pi-Pnevma Ethouab, ti-Trias et-jik evol, ten-ouosht emmos ten-ti-oou nas.", eng: "Blessed be the Father and the Son and the Holy Spirit, the perfect Trinity. We worship Him and glorify Him." },
         ],
         "Amen Amen Amen Ton Thanaton": [
@@ -612,9 +612,9 @@ document.addEventListener("DOMContentLoaded", () => {
             { coptic: "Ke deome;a cou `o :eoc `ymwn.", trans: "Ke deometha sou o Theos imon.", eng: "And we entreat You, O our God." },
         ],
         "One is the All Holy Father": [
-            { coptic: "Oueic Viwt =e=;=u.", trans: "Oueis Fiot Ethouav.", eng: "One is the All Holy Father." },
-            { coptic: "Oueic Syri =e=;=u.", trans: "Oueis Shiri Ethouav.", eng: "One is the All Holy Son." },
-            { coptic: "Ouei =p=n=a =e=;=u.", trans: "Ouei Epnevma Ethouav.", eng: "One is the All Holy Spirit." },
+            { coptic: "Oueic Viwt =e=;=u.", trans: "Oueis Fiot Ethouab.", eng: "One is the All Holy Father." },
+            { coptic: "Oueic Syri =e=;=u.", trans: "Oueis Shiri Ethouab.", eng: "One is the All Holy Son." },
+            { coptic: "Ouei =p=n=a =e=;=u.", trans: "Ouei Epnevma Ethouab.", eng: "One is the All Holy Spirit." },
             { coptic: "`Amyn.", trans: "Amin.", eng: "Amen." },
         ],
         "As it Was (Osberein)": [
@@ -804,7 +804,7 @@ document.addEventListener("DOMContentLoaded", () => {
         t = t.replace(/Pi=,=c/g, protect("Pikhristos"));   // Christ (alt)
         t = t.replace(/P=o=c/g, protect("Epchois"));       // Lord (abbreviated)
         t = t.replace(/ta=o=c/g, protect("Tashois"));       // My Lady
-        t = t.replace(/=e=;=u/g, protect("Ethouav"));      // Holy (ⲉⲑⲟⲩⲁⲃ)
+        t = t.replace(/=e=;=u/g, protect("Ethouab"));      // Holy (ⲉⲑⲟⲩⲁⲃ)
         t = t.replace(/=a=l/g, protect("Alleluia"));        // Alleluia
         t = t.replace(/=p=n=a/g, protect("Epnevma"));      // Spirit (ⲡⲛⲉⲩⲙⲁ)
 
