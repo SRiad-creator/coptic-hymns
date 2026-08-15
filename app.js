@@ -360,6 +360,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${scIcon} 🇬🇧 English — ${recordings.english.label}
                     </a>`;
                 }
+                if (recordings.englishAlt) {
+                    const altUrl = recordings.englishAlt.url;
+                    linksHtml += `<a href="${altUrl}" target="_blank" class="recording-link english-link">
+                        ${scIcon} 🇬🇧 English — ${recordings.englishAlt.label}
+                    </a>`;
+                }
                 // Local audio recordings (embedded player)
                 let localAudioHtml = '';
                 if (recordings.local) {
@@ -511,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Shere ne Maria": {
             coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/mmguirguis/hail-to-mary", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/response-to-the-acts-annual", label: "Coptic Hymns in English" },
             local: [{ file: "Shere ne Maria.mpeg", label: "🎶 Shere ne Maria" }],
         },
         "The Hymn of the Censer (Tai Shouri)": {
@@ -521,6 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 { file: "Tai Shori.mpeg", label: "🎶 Tai Shouri" },
                 { file: "Ti Shori.mpeg", label: "🎶 Ti Shouri (fasting)" },
             ],
+            englishAlt: { url: "https://soundcloud.com/mmguirguis/the-golden-censer", label: "The Golden Censer (fasting)" },
         },
         "Aspasmos Adam (Rejoice O Mary)": {
             coptic: { id: "iuTsLswt2RU", label: "Ibrahim Ayad" },
@@ -557,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Doxa Patri": {
             coptic: { id: "MlOg7qS3nTQ", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+doxa+patri", label: "Coptic Hymns in English" },
+            english: { url: "https://soundcloud.com/mmguirguis/lotw-glory-to-the-father", label: "Coptic Hymns in English" },
             local: [{ file: "Doxa Patri Ke.mpeg", label: "🎶 Doxa Patri Ke" }],
         },
         "Amen Amen Amen Ton Thanaton": {
@@ -601,6 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
         "Gospel Response": {
+            english: { url: "https://soundcloud.com/mmguirguis/gospel-response-standard", label: "Coptic Hymns in English" },
             local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
         },
     };
