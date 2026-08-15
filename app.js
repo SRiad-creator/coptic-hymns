@@ -360,9 +360,21 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${scIcon} 🇬🇧 English — ${recordings.english.label}
                     </a>`;
                 }
+                // Local audio recordings (embedded player)
+                let localAudioHtml = '';
+                if (recordings.local) {
+                    const audioIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`;
+                    recordings.local.forEach(loc => {
+                        localAudioHtml += `<div class="local-recording">
+                            <span class="local-recording-label">${audioIcon} ${loc.label}</span>
+                            <audio controls preload="none" src="recordings/${loc.file}"></audio>
+                        </div>`;
+                    });
+                }
                 ytContainer.innerHTML = `<div class="recordings-links-section">
                     <span class="recordings-label">🎵 Listen to Recordings</span>
                     <div class="recordings-links">${linksHtml}</div>
+                    ${localAudioHtml}
                 </div>`;
                 ytContainer.style.display = "block";
                 recordingDropdown.innerHTML = `<option value="">Recordings available</option>`;
@@ -500,10 +512,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "Shere ne Maria": {
             coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/hail-to-mary", label: "Coptic Hymns in English" },
+            local: [{ file: "Shere ne Maria.mpeg", label: "🎶 Shere ne Maria" }],
         },
         "The Hymn of the Censer (Tai Shouri)": {
             coptic: { id: "hXy9InYKFn0", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-censer", label: "Coptic Hymns in English" },
+            local: [
+                { file: "Tai Shori.mpeg", label: "🎶 Tai Shouri" },
+                { file: "Ti Shori.mpeg", label: "🎶 Ti Shouri (fasting)" },
+            ],
         },
         "Aspasmos Adam (Rejoice O Mary)": {
             coptic: { id: "iuTsLswt2RU", label: "Ibrahim Ayad" },
@@ -514,6 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Procession of the Lamb (Alleluia Fai Pe Piehoou)": {
             english: { url: "https://soundcloud.com/mmguirguis/alleluia-this-is-the-day", label: "Coptic Hymns in English" },
+            local: [{ file: "Alleluia Fai Pe Pi.mpeg", label: "🎶 Alleluia Fai Pe Pi" }],
         },
         "Trisagion (Agios)": {
             coptic: { id: "Me0wgXuAWKg", label: "Ibrahim Ayad" },
@@ -540,6 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Doxa Patri": {
             coptic: { id: "MlOg7qS3nTQ", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+doxa+patri", label: "Coptic Hymns in English" },
+            local: [{ file: "Doxa Patri Ke.mpeg", label: "🎶 Doxa Patri Ke" }],
         },
         "Amen Amen Amen Ton Thanaton": {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
@@ -580,6 +599,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "As it Was (Osberein)": {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
+        },
+        "Gospel Response": {
+            local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
         },
     };
 
