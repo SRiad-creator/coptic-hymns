@@ -932,6 +932,14 @@ document.addEventListener("DOMContentLoaded", () => {
         result = result.replace(/\bUio\b/gi, "io");              // Υἱός — the Son (U silent)
         result = result.replace(/\bnen\b/g, "nin");              // νῦν — now
 
+        // Coptic pronunciation rules
+        // ⲭ (Chi) before ⲉ/ⲏ → "sh" not "kh"
+        result = result.replace(/\bKhere\b/g, "Shere");          // ⲭⲉⲣⲉ — Hail
+        result = result.replace(/\bkhere\b/g, "shere");
+        result = result.replace(/arkhi/gi, "arshi");             // ⲁⲣⲭⲏ — arch- prefix
+        // ⲅⲅ (double gamma) → "ng" not "gg"
+        result = result.replace(/aggel/gi, "angel");             // ⲁⲅⲅⲉⲗⲟⲥ — angel
+
         // Common biblical/saint names → standard English forms
         result = result.replace(/\bGavriil\b/g, "Gabriel");
         result = result.replace(/\bMikhail\b/g, "Michael");
