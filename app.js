@@ -475,6 +475,10 @@ document.addEventListener("DOMContentLoaded", () => {
             { coptic: "`Fcmarwout `nje vy`e;nyou qen `vran `mP=o=c.", trans: "Ef-esmaroout enje fi-ethniou khen ef-ran em-Epchois.", eng: "Blessed is He who comes in the name of the Lord." },
             { coptic: "=a=l.", trans: "Alleluia.", eng: "Alleluia." },
         ],
+        "The Golden Censer (Ti Shouri)": [
+            { coptic: "]souriy `nnoub te ]par;enoc@ pec`arwmata pe Pencwtyr.", trans: "Ti-shouri en-noub te ti-Parthenos, pes-aromata pe Pen-Soteer.", eng: "The golden censer is the Virgin, her aroma is our Savior." },
+            { coptic: "Acmici `mmof@ afcw] `mmon@ ouoh af,a nennobi nan `ebol.", trans: "As-misi emmof, af-soti emmon, ouoh af-kha nen-novi nan evol.", eng: "She gave birth to Him; He saved us, and forgave us our sins." },
+        ],
         "Gospel Response": [
             { coptic: "Pioui1t `mpikocmoc `tyrf.", trans: "Pi-ouisht empi-kosmos tirf.", eng: "The salvation of the whole world." },
         ],
@@ -525,9 +529,13 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-censer", label: "Coptic Hymns in English" },
             local: [
                 { file: "Tai Shori.mpeg", label: "🎶 Tai Shouri" },
+            ],
+        },
+        "The Golden Censer (Ti Shouri)": {
+            english: { url: "https://soundcloud.com/mmguirguis/the-golden-censer", label: "Coptic Hymns in English" },
+            local: [
                 { file: "Ti Shori.mpeg", label: "🎶 Ti Shouri (fasting)" },
             ],
-            englishAlt: { url: "https://soundcloud.com/mmguirguis/the-golden-censer", label: "The Golden Censer (fasting)" },
         },
         "Aspasmos Adam (Rejoice O Mary)": {
             coptic: { id: "iuTsLswt2RU", label: "Ibrahim Ayad" },
