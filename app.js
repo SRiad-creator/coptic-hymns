@@ -919,6 +919,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Pneuma (Spirit) — upsilon after 'e' incorrectly becomes 'ee'
         result = result.replace(/pneem/gi, "Pnevm");
 
+        // Greek loanword fixes
+        result = result.replace(/Iskheros/gi, "Ischeros");       // Ἰσχυρός — Holy Mighty
+        result = result.replace(/estaerothis/gi, "estavrothis"); // σταυρωθείς — crucified
+        result = result.replace(/\bUio\b/gi, "io");              // Υἱός — the Son (U silent)
+        result = result.replace(/\bnen\b/g, "nin");              // νῦν — now
+
         // Common biblical/saint names → standard English forms
         result = result.replace(/\bGavriil\b/g, "Gabriel");
         result = result.replace(/\bMikhail\b/g, "Michael");
