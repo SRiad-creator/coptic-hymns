@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadServices(seasonId, seasonName, skipHash) {
         navState.seasonId = seasonId;
         navState.seasonName = seasonName;
-        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}`);
+        if (!skipHash) setHash(`/season/${seasonId}/${slug(seasonName)}`);
         showView("services");
 
         document.getElementById("services-view-title").textContent = seasonName;
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navState.seasonName = seasonName;
         navState.serviceId = serviceId;
         navState.serviceName = serviceName;
-        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}/service/${serviceId}/${encodeURIComponent(serviceName)}`);
+        if (!skipHash) setHash(`/season/${seasonId}/${slug(seasonName)}/service/${serviceId}/${slug(serviceName)}`);
         showView("hymns");
 
         document.getElementById("hymns-view-title").textContent = `${seasonName} — ${serviceName}`;
@@ -288,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Custom Hymn Loading (for hymns not in hazzat.com API)
     // ==================
     function loadCustomHymn(hymnName, seasonName, serviceName, skipHash) {
-        if (!skipHash) setHash(`/season/${navState.seasonId}/${encodeURIComponent(seasonName)}/service/${navState.serviceId}/${encodeURIComponent(serviceName)}/custom/${encodeURIComponent(hymnName)}`);
+        if (!skipHash) setHash(`/season/${navState.seasonId}/${slug(seasonName)}/service/${navState.serviceId}/${slug(serviceName)}/custom/${slug(hymnName)}`);
         showView("hymn");
         hymnSeasonPath.textContent = `${seasonName} → ${serviceName}`;
         hymnTitleMain.textContent = hymnName;
@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hymn Loading
     // ==================
     async function loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymnName, skipHash) {
-        if (!skipHash) setHash(`/season/${seasonId}/${encodeURIComponent(seasonName)}/service/${serviceId}/${encodeURIComponent(serviceName)}/hymn/${hymnId}/${encodeURIComponent(hymnName)}`);
+        if (!skipHash) setHash(`/season/${seasonId}/${slug(seasonName)}/service/${serviceId}/${slug(serviceName)}/hymn/${hymnId}/${slug(hymnName)}`);
         showView("hymn");
         hymnSeasonPath.textContent = `${seasonName} → ${serviceName}`;
         hymnTitleMain.textContent = hymnName;
@@ -1342,6 +1342,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // URL Hash Routing (deep linking)
     // ==================
     let suppressHashChange = false;
+    function slug(str) { return str.replace(/ /g, '-'); }
+    function unslug(str) { return str.replace(/-/g, ' '); }
     function setHash(hash) {
         suppressHashChange = true;
         window.location.hash = hash;
@@ -1358,25 +1360,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Parse: /season/{id}/{name}/service/{id}/{name}/hymn/{id}/{name}
         const parts = hash.split('/');
-        // parts[0] = '', parts[1] = 'season', parts[2] = id, parts[3] = name, ...
         if (parts[1] === 'season' && parts[2]) {
             const seasonId = parts[2];
-            const seasonName = decodeURIComponent(parts[3] || '');
+            const seasonName = unslug(parts[3] || '');
 
             if (parts[4] === 'service' && parts[5]) {
                 const serviceId = parts[5];
-                const serviceName = decodeURIComponent(parts[6] || '');
+                const serviceName = unslug(parts[6] || '');
 
                 if (parts[7] === 'hymn' && parts[8]) {
                     const hymnId = parts[8];
-                    const hymnName = decodeURIComponent(parts[9] || '');
+                    const hymnName = unslug(parts[9] || '');
                     navState.seasonId = seasonId;
                     navState.seasonName = seasonName;
                     navState.serviceId = serviceId;
                     navState.serviceName = serviceName;
                     await loadHymn(seasonId, serviceId, hymnId, seasonName, serviceName, hymnName, true);
                 } else if (parts[7] === 'custom' && parts[8]) {
-                    const hymnName = decodeURIComponent(parts[8]);
+                    const hymnName = unslug(parts[8]);
                     navState.seasonId = seasonId;
                     navState.seasonName = seasonName;
                     navState.serviceId = serviceId;
