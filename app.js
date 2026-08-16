@@ -807,8 +807,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         // Order matters: longer patterns first
         t = t.replace(/Pen=o=c/g, protect("Epchois"));     // Our Lord
-        t = t.replace(/P=,=c/g, protect("Pikhristos"));    // Christ
-        t = t.replace(/Pi=,=c/g, protect("Pikhristos"));   // Christ (alt)
+        t = t.replace(/P=,=c/g, protect("Pi-Ekhristos"));    // Christ
+        t = t.replace(/Pi=,=c/g, protect("Pi-Ekhristos"));   // Christ (alt)
         t = t.replace(/P=o=c/g, protect("Epchois"));       // Lord (abbreviated)
         t = t.replace(/ta=o=c/g, protect("Tashois"));       // My Lady
         t = t.replace(/=e=;=u/g, protect("Ethouab"));      // Holy (ⲉⲑⲟⲩⲁⲃ)
@@ -940,6 +940,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // ⲅⲅ (double gamma) → "ng" not "gg"
         result = result.replace(/aggel/gi, "angel");             // ⲁⲅⲅⲉⲗⲟⲥ — angel
 
+        // Standalone 'Al' = Alleluia
+        result = result.replace(/\bAl\b/g, "Alleluia");
+
         // Common biblical/saint names → standard English forms
         result = result.replace(/\bGavriil\b/g, "Gabriel");
         result = result.replace(/\bMikhail\b/g, "Michael");
@@ -948,7 +951,8 @@ document.addEventListener("DOMContentLoaded", () => {
         result = result.replace(/\bDafid\b/g, "David");
         result = result.replace(/\bMoisis\b/g, "Moses");
         result = result.replace(/\bIesse\b/g, "Yesse");
-        result = result.replace(/\bIisouc\b/gi, "Iisous");
+        result = result.replace(/\bIisouc\b/gi, "Isos");
+        result = result.replace(/\bIisous\b/gi, "Isos");
         result = result.replace(/\bIsrail\b/g, "Israel");
         result = result.replace(/\bSion\b/g, "Zion");
 
