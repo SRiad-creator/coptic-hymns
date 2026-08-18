@@ -651,6 +651,9 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/mmguirguis/response-to-the-acts-annual", label: "Coptic Hymns in English" },
             local: [{ file: "Shere ne Maria.mpeg", label: "🎶 Shere ne Maria" }],
         },
+        "2nd Praxis Response (Tote Alithos)": {
+            coptic: { url: "https://on.soundcloud.com/RDrZQbobunIwamdoDI", label: "Coptic" },
+        },
         "The Hymn of the Censer (Tai Shouri)": {
             coptic: { url: "https://on.soundcloud.com/XNbwknHvfe1mVCMQ7I", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-censer", label: "Coptic Hymns in English" },
