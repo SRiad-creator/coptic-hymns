@@ -327,8 +327,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const ytIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>`;
             const scIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11.56 8.87V17h8.76c1.85 0 2.68-1.4 2.68-2.81 0-1.4-.83-2.82-2.68-2.82-.52 0-.95.13-1.35.35-.07-3.38-2.73-5.65-5.13-5.65-1.01 0-1.66.33-2.28.8v1zm-1.93-.04V17h1.24V8.07c-.37.2-.81.5-1.24.76zM7.51 9.83V17h1.24V9.4c-.38.14-.81.28-1.24.43zm-2.46 1.6V17h1.23v-4.85c-.38.12-.8.18-1.23.28zm-2.47.93V17h1.24v-3.95c-.44.05-.81.17-1.24.31zM0 14.29V17h1.24v-2.32c-.42-.12-.83-.25-1.24-.39z"/></svg>`;
             if (recordings.coptic) {
-                linksHtml += `<a href="https://www.youtube.com/watch?v=${recordings.coptic.id}" target="_blank" class="recording-link coptic-link">
-                    ${ytIcon} ☦️ Coptic — ${recordings.coptic.label}
+                const copticUrl = recordings.coptic.url || `https://www.youtube.com/watch?v=${recordings.coptic.id}`;
+                const copticIcon = recordings.coptic.url ? scIcon : ytIcon;
+                linksHtml += `<a href="${copticUrl}" target="_blank" class="recording-link coptic-link">
+                    ${copticIcon} ☦️ Coptic — ${recordings.coptic.label}
                 </a>`;
             }
             if (recordings.english) {
@@ -471,9 +473,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // SoundCloud SVG icon
                 const scIcon = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11.56 8.87V17h8.76c1.85 0 2.68-1.4 2.68-2.81 0-1.4-.83-2.82-2.68-2.82-.52 0-.95.13-1.35.35-.07-3.38-2.73-5.65-5.13-5.65-1.01 0-1.66.33-2.28.8v1zm-1.93-.04V17h1.24V8.07c-.37.2-.81.5-1.24.76zM7.51 9.83V17h1.24V9.4c-.38.14-.81.28-1.24.43zm-2.46 1.6V17h1.23v-4.85c-.38.12-.8.18-1.23.28zm-2.47.93V17h1.24v-3.95c-.44.05-.81.17-1.24.31zM0 14.29V17h1.24v-2.32c-.42-.12-.83-.25-1.24-.39z"/></svg>`;
                 if (recordings.coptic) {
-                    const copticUrl = `https://www.youtube.com/watch?v=${recordings.coptic.id}`;
+                    const copticUrl = recordings.coptic.url || `https://www.youtube.com/watch?v=${recordings.coptic.id}`;
+                    const copticIcon = recordings.coptic.url ? scIcon : ytIcon;
                     linksHtml += `<a href="${copticUrl}" target="_blank" class="recording-link coptic-link">
-                        ${ytIcon} ☦️ Coptic — ${recordings.coptic.label}
+                        ${copticIcon} ☦️ Coptic — ${recordings.coptic.label}
                     </a>`;
                 }
                 if (recordings.english) {
