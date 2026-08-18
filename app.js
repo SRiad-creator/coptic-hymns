@@ -680,6 +680,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "Trisagion (Agios)": {
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-trisagion-2", label: "Coptic Hymns in English" },
+            englishAlt: { url: "https://on.soundcloud.com/dwZ4wUYgTAOi08pqNu", label: "Melismatic" },
         },
         "Psalm 150": {
             coptic: { id: "wDWjflJbHpE", label: "Ibrahim Ayad" },
