@@ -693,6 +693,10 @@ document.addEventListener("DOMContentLoaded", () => {
             coptic: { id: "lCoJVzpJmpE", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/arise-o-children", label: "Coptic Hymns in English" },
         },
+        "Hymn of the Intercessions": {
+            coptic: { url: "https://on.soundcloud.com/cAeWU1fUsd8UvXEayM", label: "Coptic" },
+            english: { url: "https://soundcloud.com/mmguirguis/sets/hymn-of-the-intercession-verses", label: "Coptic Hymns in English" },
+        },
         "Penishti": {
             coptic: { url: "https://on.soundcloud.com/cAeWU1fUsd8UvXEayM", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/sets/hymn-of-the-intercession-verses", label: "Coptic Hymns in English" },
