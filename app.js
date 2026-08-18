@@ -721,10 +721,7 @@ document.addEventListener("DOMContentLoaded", () => {
             coptic: { id: "lStifjX0u1U", label: "Coptic Hymn" },
             english: { url: "https://soundcloud.com/mmguirguis/the-bread-of-life", label: "Coptic Hymns in English" },
         },
-        "Lord Have Mercy (Keriye Eleyson)": {
-            coptic: { id: "V8u16f3ux8I", label: "Ibrahim Ayad" },
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+kyrie+eleison", label: "Coptic Hymns in English" },
-        },
+        
         "Sotis": {
             coptic: { url: "https://on.soundcloud.com/SNub3tLXDRZpuNSSaQ", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/saved-amen-1", label: "Coptic Hymns in English" },
