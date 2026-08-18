@@ -652,7 +652,7 @@ document.addEventListener("DOMContentLoaded", () => {
             local: [{ file: "Shere ne Maria.mpeg", label: "🎶 Shere ne Maria" }],
         },
         "The Hymn of the Censer (Tai Shouri)": {
-            coptic: { id: "hXy9InYKFn0", label: "Ibrahim Ayad" },
+            coptic: { url: "https://on.soundcloud.com/XNbwknHvfe1mVCMQ7I", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-censer", label: "Coptic Hymns in English" },
             local: [
                 { file: "Tai Shori.mpeg", label: "🎶 Tai Shouri" },
