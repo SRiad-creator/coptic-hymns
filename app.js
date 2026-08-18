@@ -679,7 +679,6 @@ document.addEventListener("DOMContentLoaded", () => {
             local: [{ file: "Alleluia Fai Pe Pi.mpeg", label: "🎶 Alleluia Fai Pe Pi" }],
         },
         "Trisagion (Agios)": {
-            coptic: { id: "Me0wgXuAWKg", label: "Ibrahim Ayad" },
             english: { url: "https://soundcloud.com/mmguirguis/hymn-of-the-trisagion-2", label: "Coptic Hymns in English" },
         },
         "Psalm 150": {
