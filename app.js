@@ -688,10 +688,12 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/mmguirguis/arise-o-children", label: "Coptic Hymns in English" },
         },
         "Penishti": {
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+penishti", label: "Coptic Hymns in English" },
+            coptic: { url: "https://on.soundcloud.com/cAeWU1fUsd8UvXEayM", label: "Coptic" },
+            english: { url: "https://soundcloud.com/mmguirguis/sets/hymn-of-the-intercession-verses", label: "Coptic Hymns in English" },
         },
         "Penishti (Great)": {
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+penishti", label: "Coptic Hymns in English" },
+            coptic: { url: "https://on.soundcloud.com/cAeWU1fUsd8UvXEayM", label: "Coptic" },
+            english: { url: "https://soundcloud.com/mmguirguis/sets/hymn-of-the-intercession-verses", label: "Coptic Hymns in English" },
         },
         "Psalm 116 (Ni Ethnos Teero)": {
             coptic: { id: "hdKatF1QJjw", label: "Ibrahim Ayad" },
