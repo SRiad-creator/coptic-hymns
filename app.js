@@ -639,7 +639,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================
     const HYMN_RECORDINGS = {
         "The Hymn of Blessing (Ten Ouosht)": {
-            coptic: { id: "rPw0eIexGvY", label: "Ibrahim Ayad" },
+            coptic: { url: "https://on.soundcloud.com/0r82Qjv1db56DAgz7G", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/hail-to-mary", label: "Coptic Hymns in English" },
         },
         "Shere Maria": {
