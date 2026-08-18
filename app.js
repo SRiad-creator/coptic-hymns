@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/mmguirguis/hail-to-mary", label: "Coptic Hymns in English" },
         },
         "Shere ne Maria": {
-            coptic: { id: "ZdMl5fYBULc", label: "Ibrahim Ayad" },
+            coptic: { url: "https://on.soundcloud.com/pqjaIUuvHaEfUUrGRw", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/response-to-the-acts-annual", label: "Coptic Hymns in English" },
             local: [{ file: "Shere ne Maria.mpeg", label: "🎶 Shere ne Maria" }],
         },
