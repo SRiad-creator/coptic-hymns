@@ -726,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+kyrie+eleison", label: "Coptic Hymns in English" },
         },
         "Sotis": {
-            coptic: { id: "lfjSs6lRfBE", label: "Coptic" },
+            coptic: { url: "https://on.soundcloud.com/SNub3tLXDRZpuNSSaQ", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/saved-amen-1", label: "Coptic Hymns in English" },
         },
         "Nisavev (All You Wise Men)": {
