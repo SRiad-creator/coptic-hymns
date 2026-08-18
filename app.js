@@ -213,6 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
         hymns.forEach((hymn, i) => {
             const hymnId = extractId(hymn.id);
 
+            // Skip API 'Gospel Response' — replaced by our custom version
+            if (hymn.name === 'Gospel Response') return;
+
             // Add sub-section labels for service 20
             if (serviceName === 'Liturgy of the Word') {
                 const isOffertory = offertoryHymns.includes(hymn.name);
@@ -251,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const CUSTOM_HYMNS = {
             'Liturgy of the Word': [
                 { name: 'The Golden Censer (Ti Shouri)', after: 'The Hymn of the Censer (Tai Shouri)' },
-                { name: 'Gospel Response (O-oniato)', after: 'Gospel Response' },
+                { name: 'Gospel Response', after: 'Trisagion (Agios)' },
             ]
         };
         const customList = CUSTOM_HYMNS[serviceName];
@@ -599,9 +602,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { coptic: "Acmici `mmof@ afcw] `mmon@ ouoh af,a nennobi nan `ebol.", trans: "As-misi emmof, af-soti emmon, ouoh af-kha nen-novi nan evol.", eng: "She gave birth to Him; He saved us, and forgave us our sins." },
         ],
         "Gospel Response": [
-            { coptic: "Pioui1t `mpikocmoc `tyrf.", trans: "Pi-ouisht empi-kosmos tirf.", eng: "The salvation of the whole world." },
-        ],
-        "Gospel Response (O-oniato)": [
             { coptic: "`Wouniatou qen oumeymyi@ ny=e=;=u `nte pai`ehoou@ piouai piouai kata pefran@ nimenra] `nte P=,=c.", trans: "O-oniato khen ou-methmi, ni-ethowab ente pai-ehoou, pi-ouai pi-ouai kata pef-ran, ni-menrati ente Pi-Ekhristos.", eng: "Blessed are they in truth, the saints of this day, each one according to his name, the beloved of Christ." },
             { coptic: "Ari`precbeuin `ehri `ejwn@ `w ten[oic `nnyb tyren ]Yeotokoc@ Maria `ymau `mPencwtyr@ `ntefxa nennobi nan ebol.", trans: "Ari-presvevin ehri egon, o tenchois en-neeb tiren ti-Theotokos, Maria ethmav em-Pen-Soteer, entef-kha nen-novi nan evol.", eng: "Intercede on our behalf, O Lady of us all the Theotokos, Mary the Mother of our Savior, that He may forgive us our sins." },
             { coptic: "Twbh `mP=o=c `e`hri `ejwn@ peniwt =e=;=u `ndikeoc@ pi`;myi Iwcyv pihamse@ `ntefxa nennobi nan `ebol.", trans: "Tobh em-Epchois ehri egon, pen-iot ethouab en-dikeos, pi-ethmi Yosef pi-hamshe, entef-kha nen-novi nan evol.", eng: "Pray to the Lord on our behalf, our holy righteous father, saint Joseph the carpenter, that He may forgive us our sins." },
@@ -747,10 +747,6 @@ document.addEventListener("DOMContentLoaded", () => {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
         "Gospel Response": {
-            english: { url: "https://soundcloud.com/mmguirguis/gospel-response-standard", label: "Coptic Hymns in English" },
-            local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
-        },
-        "Gospel Response (O-oniato)": {
             english: { url: "https://soundcloud.com/mmguirguis/gospel-response-standard", label: "Coptic Hymns in English" },
             local: [{ file: "O-oniato.mpeg", label: "🎶 O-oniato (Gospel Response)" }],
         },
