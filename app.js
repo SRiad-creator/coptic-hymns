@@ -733,6 +733,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Apinav Shopi": {
             coptic: { url: "https://on.soundcloud.com/RmqH3pPsvBnA4Ytxcz", label: "Coptic" },
         },
+        "Al El Qorban": {
+            coptic: { url: "https://on.soundcloud.com/wpDA4clgbdpxXlOy3M", label: "Coptic" },
+        },
         "One is the All Holy Father": {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
         },
