@@ -731,7 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+nisavev", label: "Coptic Hymns in English" },
         },
         "Apinav Shopi": {
-            english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+apinav", label: "Coptic Hymns in English" },
+            coptic: { url: "https://on.soundcloud.com/RmqH3pPsvBnA4Ytxcz", label: "Coptic" },
         },
         "One is the All Holy Father": {
             coptic: { id: "WRFJdtM5XmE", label: "Coptic" },
