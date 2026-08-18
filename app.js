@@ -698,7 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+ni+ethnos", label: "Coptic Hymns in English" },
         },
         "Doxa Patri": {
-            coptic: { id: "MlOg7qS3nTQ", label: "Ibrahim Ayad" },
+            coptic: { url: "https://on.soundcloud.com/0hMnbYyg2qM0w6OAAV", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/lotw-glory-to-the-father", label: "Coptic Hymns in English" },
             local: [{ file: "Doxa Patri Ke.mpeg", label: "🎶 Doxa Patri Ke" }],
         },
