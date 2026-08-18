@@ -713,7 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
             english: { url: "https://soundcloud.com/search?q=coptic+hymns+english+morning+doxology", label: "Coptic Hymns in English" },
         },
         "Apetjeek Evol": {
-            coptic: { id: "FFzoNBkKC_g", label: "Coptic Lent" },
+            coptic: { url: "https://on.soundcloud.com/rKw6x1CaSoXdcKKVyY", label: "Coptic" },
             english: { url: "https://soundcloud.com/mmguirguis/perfect-is-the-blessing-1", label: "Coptic Hymns in English" },
         },
         "The Creed": {
